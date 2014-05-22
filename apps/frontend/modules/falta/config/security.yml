@@ -1,0 +1,6 @@
+all:
+  is_secure: true 
+  credentials: [[administrar,registrar]]
+index:
+  is_secure: true
+  credentials: [[administrar,registrar]]

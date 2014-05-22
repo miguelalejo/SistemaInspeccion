@@ -1,0 +1,50 @@
+#botonsintachado
+{
+	text-decoration: none;
+}
+
+figure { 
+	margin: 0; 
+	padding: 0; 
+	position: relative; 
+	width: 32px;  
+	font-size:8pt; 
+	overflow: hidden; 
+}
+
+figure img { 
+	max-width: 100%;
+	transition-duration: 2.4s;
+	-webkit-transition-duration: 2.4ss;
+    -moz-transition-duration: 2.4ss;
+    -o-transition-duration: 2.4ss;
+    -ms-transition-duration: 2.4ss;
+	transition-property: transform, opacity;
+	transition-timing-function: linear; 
+}
+figure:hover figcaption { 
+	-webkit-transform: translateY(-2rem);
+    -moz-transform: translateY(-2rem);
+    -o-transform: translateY(-2rem);
+    -ms-transform: translateY(-2rem);
+	transform: translateY(-2rem); 
+}
+figure figcaption { 
+	background: rgba(0,0,0,0.3); 
+	color: #fff; 
+	padding: .3rem; 
+	position: absolute; 
+	transition: .6s; 
+}
+
+.tiponovedad {
+	background:url(/images/tiponovedad/tiponovedad.png) no-repeat 80% 50%;	
+}
+.error_list
+{
+	font-weight: bold;
+    color:red;
+}
+
+
+

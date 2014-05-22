@@ -1,0 +1,1 @@
+Mofico en nombre de la carpeta sfPropelPlugin hacia sfPropelPlugin_temp

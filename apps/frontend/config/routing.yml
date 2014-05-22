@@ -1,0 +1,82 @@
+# default rules
+homepage:
+  url:   /
+  param: { module: principal, action: index }
+
+default_index:
+  url:   /:module
+  param: { action: index }
+
+default:
+  url:   /:module/:action/*
+
+ruta_alumno:
+  url:   /alumno
+  param: {module: alumno, action: index}
+
+ruta_curso:
+  url:   /curso
+  param: {module: curso, action: index}
+
+ruta_paralelo:
+  url:   /paralelo
+  param: {module: paralelo, action: index}
+
+ruta_inspector:
+  url:   /inspector
+  param: {module: inspector, action: index}
+
+ruta_materia:
+  url:   /materia
+  param: {module: materia, action: index}
+
+ruta_horario:
+  url:   /horario
+  param: {module: horario, action: index}
+
+ruta_dia:
+  url:   /dia
+  param: {module: dia, action: index}
+
+ruta_tiponovedad:
+  url:   /tiponovedad
+  param: {module: tiponovedad, action: index}
+
+ruta_tipofalta:
+  url:   /tipofalta
+  param: {module: tipofalta, action: index}
+  
+ruta_cursoalumno:
+  url:   /cursoalumno
+  param: {module: cursoalumno, action: index}
+
+ruta_novedad:
+  url:   /novedad
+  param: {module: novedad, action: index}
+
+ruta_falta:
+  url:   /falta
+  param: {module: falta, action: index}
+
+ruta_cursomateriahorario:
+  url:   /cursomateriahorario
+  param: {module: cursomateriahorario, action: index}
+  
+ruta_novedadesAlumno:
+  url:   /novedadesAlumno
+  param: {module: novedadesAlumno, action: index}
+ 
+ruta_periodo:
+  url:   /periodo
+  param: {module: periodo, action: index}
+
+ruta_periodoescolar:
+  url:   /periodoescolar
+  param: {module: periodoescolar, action: index}
+
+ruta_parcial:
+  url:   /parcial
+  param: {module: parcial, action: index}
+
+ruta_logout:
+  url:   /logout

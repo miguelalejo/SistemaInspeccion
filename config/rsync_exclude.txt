@@ -1,0 +1,6 @@
+# config/rsync_exclude.txt
+.svn
+/web/uploads/*
+/cache/*
+/log/*
+/web/*_dev.php

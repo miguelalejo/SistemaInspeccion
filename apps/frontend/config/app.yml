@@ -1,0 +1,8 @@
+# default values
+all:
+  max_resultados_por_pagina:    7
+  max_edad_alumno:    20
+  max_rango_anios:    5
+  sf_guard_plugin:
+    success_signin_url:    /
+    success_signout_url:    /

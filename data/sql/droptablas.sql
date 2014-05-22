@@ -1,0 +1,14 @@
+/*[22:43:03][  78 ms]*/ DROP TABLE `cnpbasedatosinspeccion`.`novedad`;
+/*[22:43:06][ 109 ms]*/ DROP TABLE `cnpbasedatosinspeccion`.`parametro`;
+/*[22:43:18][  78 ms]*/ DROP TABLE `cnpbasedatosinspeccion`.`inspector`;
+/*[22:43:41][  47 ms]*/ DROP TABLE `cnpbasedatosinspeccion`.`cursomateriahorario`;
+/*[22:43:57][  47 ms]*/ DROP TABLE `cnpbasedatosinspeccion`.`falta`;
+/*[22:44:00][  94 ms]*/ DROP TABLE `cnpbasedatosinspeccion`.`horario`;
+/*[22:44:03][  78 ms]*/ DROP TABLE `cnpbasedatosinspeccion`.`materia`;
+/*[22:44:06][  94 ms]*/ DROP TABLE `cnpbasedatosinspeccion`.`parcial`;
+/*[22:44:15][  78 ms]*/ DROP TABLE `cnpbasedatosinspeccion`.`alumno`;
+/*[22:44:18][  78 ms]*/ DROP TABLE `cnpbasedatosinspeccion`.`curso`;
+/*[22:44:21][  32 ms]*/ DROP TABLE `cnpbasedatosinspeccion`.`dia`;
+/*[22:44:27][  47 ms]*/ DROP TABLE `cnpbasedatosinspeccion`.`periodoescolar`;
+/*[22:44:30][  78 ms]*/ DROP TABLE `cnpbasedatosinspeccion`.`periodo`;
+/*[22:44:34][  62 ms]*/ DROP TABLE `cnpbasedatosinspeccion`.`tipofalta`;

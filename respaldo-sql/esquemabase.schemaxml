@@ -1,0 +1,427 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schemadesigner version="6.5">
+<source>
+<database charset="latin1" collation="latin1_swedish_ci">cnpbasedatosinspeccion</database>
+</source>
+<canvas zoom="60">
+<tables>
+<table name="alumno" view="colnames">
+<left>915</left>
+<top>68</top>
+<width>135</width>
+<height>193</height>
+<sql_create_table>CREATE TABLE `alumno` (
+  `codigoalumno` int(11) NOT NULL AUTO_INCREMENT,
+  `cedula` varchar(11) NOT NULL,
+  `nombre` varchar(30) NOT NULL,
+  `apellido` varchar(30) NOT NULL,
+  `fechanacimiento` date NOT NULL,
+  `telefono` varchar(12) DEFAULT NULL,
+  `celular` varchar(13) DEFAULT NULL,
+  `correoelectronico` varchar(100) DEFAULT NULL,
+  `cedularepresentante` varchar(11) NOT NULL,
+  `nombrerepresentante` varchar(30) NOT NULL,
+  `apellidorepresentante` varchar(30) NOT NULL,
+  `telefonorepresentante` varchar(12) DEFAULT NULL,
+  `celularrepresentante` varchar(13) DEFAULT NULL,
+  `correoelectronicorepresentante` varchar(250) DEFAULT NULL,
+  `imagen` longblob,
+  PRIMARY KEY (`codigoalumno`),
+  UNIQUE KEY `CedulaIndex_idx` (`cedula`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1</sql_create_table>
+</table>
+<table name="curso" view="colnames">
+<left>601</left>
+<top>352</top>
+<width>76</width>
+<height>85</height>
+<sql_create_table>CREATE TABLE `curso` (
+  `codigocurso` int(11) NOT NULL AUTO_INCREMENT,
+  `codigoperiodo` int(11) NOT NULL,
+  `curso` varchar(15) NOT NULL,
+  `paralelo` varchar(20) NOT NULL,
+  PRIMARY KEY (`codigocurso`),
+  UNIQUE KEY `CursoParaleloPeriodoIndex_idx` (`curso`,`paralelo`,`codigoperiodo`),
+  KEY `codigoperiodo_idx` (`codigoperiodo`),
+  CONSTRAINT `curso_ibfk_1` FOREIGN KEY (`codigoperiodo`) REFERENCES `periodo` (`codigoperiodo`),
+  CONSTRAINT `curso_ibfk_2` FOREIGN KEY (`codigoperiodo`) REFERENCES `periodo` (`codigoperiodo`),
+  CONSTRAINT `curso_ibfk_3` FOREIGN KEY (`codigoperiodo`) REFERENCES `periodo` (`codigoperiodo`),
+  CONSTRAINT `curso_ibfk_4` FOREIGN KEY (`codigoperiodo`) REFERENCES `periodo` (`codigoperiodo`),
+  CONSTRAINT `curso_ibfk_5` FOREIGN KEY (`codigoperiodo`) REFERENCES `periodo` (`codigoperiodo`),
+  CONSTRAINT `curso_ibfk_6` FOREIGN KEY (`codigoperiodo`) REFERENCES `periodo` (`codigoperiodo`),
+  CONSTRAINT `curso_ibfk_7` FOREIGN KEY (`codigoperiodo`) REFERENCES `periodo` (`codigoperiodo`),
+  CONSTRAINT `curso_ibfk_8` FOREIGN KEY (`codigoperiodo`) REFERENCES `periodo` (`codigoperiodo`)
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1</sql_create_table>
+</table>
+<table name="cursomateriahorario" view="colnames">
+<left>1092</left>
+<top>540</top>
+<width>119</width>
+<height>105</height>
+<sql_create_table>CREATE TABLE `cursomateriahorario` (
+  `codigocursomateriahorario` int(11) NOT NULL AUTO_INCREMENT,
+  `codigocurso` int(11) NOT NULL,
+  `codigohorario` int(11) NOT NULL,
+  `codigodia` int(11) NOT NULL,
+  `codigomateria` int(11) NOT NULL,
+  `descripcion` text,
+  PRIMARY KEY (`codigocursomateriahorario`),
+  UNIQUE KEY `CursoMateriaHorarioIndex_idx` (`codigocurso`,`codigohorario`,`codigodia`,`codigomateria`),
+  KEY `codigocurso_idx` (`codigocurso`),
+  KEY `codigomateria_idx` (`codigomateria`),
+  KEY `codigodia_idx` (`codigodia`),
+  KEY `codigohorario_idx` (`codigohorario`),
+  CONSTRAINT `cursomateriahorario_ibfk_1` FOREIGN KEY (`codigomateria`) REFERENCES `materia` (`codigomateria`),
+  CONSTRAINT `cursomateriahorario_ibfk_10` FOREIGN KEY (`codigohorario`) REFERENCES `horario` (`codigohorario`),
+  CONSTRAINT `cursomateriahorario_ibfk_11` FOREIGN KEY (`codigodia`) REFERENCES `dia` (`codigodia`),
+  CONSTRAINT `cursomateriahorario_ibfk_12` FOREIGN KEY (`codigocurso`) REFERENCES `curso` (`codigocurso`),
+  CONSTRAINT `cursomateriahorario_ibfk_13` FOREIGN KEY (`codigomateria`) REFERENCES `materia` (`codigomateria`),
+  CONSTRAINT `cursomateriahorario_ibfk_14` FOREIGN KEY (`codigohorario`) REFERENCES `horario` (`codigohorario`),
+  CONSTRAINT `cursomateriahorario_ibfk_15` FOREIGN KEY (`codigodia`) REFERENCES `dia` (`codigodia`),
+  CONSTRAINT `cursomateriahorario_ibfk_16` FOREIGN KEY (`codigocurso`) REFERENCES `curso` (`codigocurso`),
+  CONSTRAINT `cursomateriahorario_ibfk_17` FOREIGN KEY (`codigomateria`) REFERENCES `materia` (`codigomateria`),
+  CONSTRAINT `cursomateriahorario_ibfk_18` FOREIGN KEY (`codigohorario`) REFERENCES `horario` (`codigohorario`),
+  CONSTRAINT `cursomateriahorario_ibfk_19` FOREIGN KEY (`codigodia`) REFERENCES `dia` (`codigodia`),
+  CONSTRAINT `cursomateriahorario_ibfk_2` FOREIGN KEY (`codigohorario`) REFERENCES `horario` (`codigohorario`),
+  CONSTRAINT `cursomateriahorario_ibfk_20` FOREIGN KEY (`codigocurso`) REFERENCES `curso` (`codigocurso`),
+  CONSTRAINT `cursomateriahorario_ibfk_21` FOREIGN KEY (`codigomateria`) REFERENCES `materia` (`codigomateria`),
+  CONSTRAINT `cursomateriahorario_ibfk_22` FOREIGN KEY (`codigohorario`) REFERENCES `horario` (`codigohorario`),
+  CONSTRAINT `cursomateriahorario_ibfk_23` FOREIGN KEY (`codigodia`) REFERENCES `dia` (`codigodia`),
+  CONSTRAINT `cursomateriahorario_ibfk_24` FOREIGN KEY (`codigocurso`) REFERENCES `curso` (`codigocurso`),
+  CONSTRAINT `cursomateriahorario_ibfk_25` FOREIGN KEY (`codigomateria`) REFERENCES `materia` (`codigomateria`),
+  CONSTRAINT `cursomateriahorario_ibfk_26` FOREIGN KEY (`codigohorario`) REFERENCES `horario` (`codigohorario`),
+  CONSTRAINT `cursomateriahorario_ibfk_27` FOREIGN KEY (`codigodia`) REFERENCES `dia` (`codigodia`),
+  CONSTRAINT `cursomateriahorario_ibfk_28` FOREIGN KEY (`codigocurso`) REFERENCES `curso` (`codigocurso`),
+  CONSTRAINT `cursomateriahorario_ibfk_29` FOREIGN KEY (`codigomateria`) REFERENCES `materia` (`codigomateria`),
+  CONSTRAINT `cursomateriahorario_ibfk_3` FOREIGN KEY (`codigodia`) REFERENCES `dia` (`codigodia`),
+  CONSTRAINT `cursomateriahorario_ibfk_30` FOREIGN KEY (`codigohorario`) REFERENCES `horario` (`codigohorario`),
+  CONSTRAINT `cursomateriahorario_ibfk_31` FOREIGN KEY (`codigodia`) REFERENCES `dia` (`codigodia`),
+  CONSTRAINT `cursomateriahorario_ibfk_32` FOREIGN KEY (`codigocurso`) REFERENCES `curso` (`codigocurso`),
+  CONSTRAINT `cursomateriahorario_ibfk_4` FOREIGN KEY (`codigocurso`) REFERENCES `curso` (`codigocurso`),
+  CONSTRAINT `cursomateriahorario_ibfk_5` FOREIGN KEY (`codigomateria`) REFERENCES `materia` (`codigomateria`),
+  CONSTRAINT `cursomateriahorario_ibfk_6` FOREIGN KEY (`codigohorario`) REFERENCES `horario` (`codigohorario`),
+  CONSTRAINT `cursomateriahorario_ibfk_7` FOREIGN KEY (`codigodia`) REFERENCES `dia` (`codigodia`),
+  CONSTRAINT `cursomateriahorario_ibfk_8` FOREIGN KEY (`codigocurso`) REFERENCES `curso` (`codigocurso`),
+  CONSTRAINT `cursomateriahorario_ibfk_9` FOREIGN KEY (`codigomateria`) REFERENCES `materia` (`codigomateria`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1</sql_create_table>
+</table>
+<table name="dia" view="colnames">
+<left>978</left>
+<top>652</top>
+<width>60</width>
+<height>74</height>
+<sql_create_table>CREATE TABLE `dia` (
+  `codigodia` int(11) NOT NULL AUTO_INCREMENT,
+  `dia` varchar(30) NOT NULL,
+  `horas` int(11) NOT NULL,
+  PRIMARY KEY (`codigodia`),
+  UNIQUE KEY `DiaIndex_idx` (`dia`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1</sql_create_table>
+</table>
+<table name="falta" view="colnames">
+<left>1134</left>
+<top>144</top>
+<width>81</width>
+<height>115</height>
+<sql_create_table>CREATE TABLE `falta` (
+  `codigofalta` int(11) NOT NULL AUTO_INCREMENT,
+  `codigoalumno` int(11) NOT NULL,
+  `codigoinspector` int(11) NOT NULL,
+  `codigotipofalta` int(11) NOT NULL,
+  `codigoparcial` int(11) NOT NULL,
+  `fecha` date NOT NULL,
+  `descripcion` text,
+  PRIMARY KEY (`codigofalta`),
+  KEY `codigoalumno_idx` (`codigoalumno`),
+  KEY `codigoinspector_idx` (`codigoinspector`),
+  KEY `codigotipofalta_idx` (`codigotipofalta`),
+  KEY `codigoparcial_idx` (`codigoparcial`),
+  CONSTRAINT `falta_ibfk_1` FOREIGN KEY (`codigotipofalta`) REFERENCES `tipofalta` (`codigotipofalta`),
+  CONSTRAINT `falta_ibfk_10` FOREIGN KEY (`codigoparcial`) REFERENCES `parcial` (`codigoparcial`),
+  CONSTRAINT `falta_ibfk_11` FOREIGN KEY (`codigoinspector`) REFERENCES `inspector` (`codigoinspector`),
+  CONSTRAINT `falta_ibfk_12` FOREIGN KEY (`codigoalumno`) REFERENCES `alumno` (`codigoalumno`),
+  CONSTRAINT `falta_ibfk_13` FOREIGN KEY (`codigotipofalta`) REFERENCES `tipofalta` (`codigotipofalta`),
+  CONSTRAINT `falta_ibfk_14` FOREIGN KEY (`codigoparcial`) REFERENCES `parcial` (`codigoparcial`),
+  CONSTRAINT `falta_ibfk_15` FOREIGN KEY (`codigoinspector`) REFERENCES `inspector` (`codigoinspector`),
+  CONSTRAINT `falta_ibfk_16` FOREIGN KEY (`codigoalumno`) REFERENCES `alumno` (`codigoalumno`),
+  CONSTRAINT `falta_ibfk_17` FOREIGN KEY (`codigotipofalta`) REFERENCES `tipofalta` (`codigotipofalta`),
+  CONSTRAINT `falta_ibfk_18` FOREIGN KEY (`codigoparcial`) REFERENCES `parcial` (`codigoparcial`),
+  CONSTRAINT `falta_ibfk_19` FOREIGN KEY (`codigoinspector`) REFERENCES `inspector` (`codigoinspector`),
+  CONSTRAINT `falta_ibfk_2` FOREIGN KEY (`codigoparcial`) REFERENCES `parcial` (`codigoparcial`),
+  CONSTRAINT `falta_ibfk_20` FOREIGN KEY (`codigoalumno`) REFERENCES `alumno` (`codigoalumno`),
+  CONSTRAINT `falta_ibfk_21` FOREIGN KEY (`codigotipofalta`) REFERENCES `tipofalta` (`codigotipofalta`),
+  CONSTRAINT `falta_ibfk_22` FOREIGN KEY (`codigoparcial`) REFERENCES `parcial` (`codigoparcial`),
+  CONSTRAINT `falta_ibfk_23` FOREIGN KEY (`codigoinspector`) REFERENCES `inspector` (`codigoinspector`),
+  CONSTRAINT `falta_ibfk_24` FOREIGN KEY (`codigoalumno`) REFERENCES `alumno` (`codigoalumno`),
+  CONSTRAINT `falta_ibfk_25` FOREIGN KEY (`codigotipofalta`) REFERENCES `tipofalta` (`codigotipofalta`),
+  CONSTRAINT `falta_ibfk_26` FOREIGN KEY (`codigoparcial`) REFERENCES `parcial` (`codigoparcial`),
+  CONSTRAINT `falta_ibfk_27` FOREIGN KEY (`codigoinspector`) REFERENCES `inspector` (`codigoinspector`),
+  CONSTRAINT `falta_ibfk_28` FOREIGN KEY (`codigoalumno`) REFERENCES `alumno` (`codigoalumno`),
+  CONSTRAINT `falta_ibfk_29` FOREIGN KEY (`codigotipofalta`) REFERENCES `tipofalta` (`codigotipofalta`),
+  CONSTRAINT `falta_ibfk_3` FOREIGN KEY (`codigoinspector`) REFERENCES `inspector` (`codigoinspector`),
+  CONSTRAINT `falta_ibfk_30` FOREIGN KEY (`codigoparcial`) REFERENCES `parcial` (`codigoparcial`),
+  CONSTRAINT `falta_ibfk_31` FOREIGN KEY (`codigoinspector`) REFERENCES `inspector` (`codigoinspector`),
+  CONSTRAINT `falta_ibfk_32` FOREIGN KEY (`codigoalumno`) REFERENCES `alumno` (`codigoalumno`),
+  CONSTRAINT `falta_ibfk_4` FOREIGN KEY (`codigoalumno`) REFERENCES `alumno` (`codigoalumno`),
+  CONSTRAINT `falta_ibfk_5` FOREIGN KEY (`codigotipofalta`) REFERENCES `tipofalta` (`codigotipofalta`),
+  CONSTRAINT `falta_ibfk_6` FOREIGN KEY (`codigoparcial`) REFERENCES `parcial` (`codigoparcial`),
+  CONSTRAINT `falta_ibfk_7` FOREIGN KEY (`codigoinspector`) REFERENCES `inspector` (`codigoinspector`),
+  CONSTRAINT `falta_ibfk_8` FOREIGN KEY (`codigoalumno`) REFERENCES `alumno` (`codigoalumno`),
+  CONSTRAINT `falta_ibfk_9` FOREIGN KEY (`codigotipofalta`) REFERENCES `tipofalta` (`codigotipofalta`)
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=latin1</sql_create_table>
+</table>
+<table name="horario" view="colnames">
+<left>894</left>
+<top>594</top>
+<width>74</width>
+<height>74</height>
+<sql_create_table>CREATE TABLE `horario` (
+  `codigohorario` int(11) NOT NULL AUTO_INCREMENT,
+  `horario` varchar(50) NOT NULL,
+  `descripcion` text,
+  PRIMARY KEY (`codigohorario`),
+  UNIQUE KEY `HorarioIndex_idx` (`horario`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1</sql_create_table>
+</table>
+<table name="inspector" view="colnames">
+<left>1320</left>
+<top>264</top>
+<width>87</width>
+<height>125</height>
+<sql_create_table>CREATE TABLE `inspector` (
+  `codigoinspector` int(11) NOT NULL AUTO_INCREMENT,
+  `cedula` varchar(11) NOT NULL,
+  `nombre` varchar(30) NOT NULL,
+  `apellido` varchar(30) NOT NULL,
+  `telefono` varchar(12) DEFAULT NULL,
+  `celular` varchar(13) DEFAULT NULL,
+  `correoelectronico` varchar(100) DEFAULT NULL,
+  `imagen` longblob,
+  PRIMARY KEY (`codigoinspector`),
+  UNIQUE KEY `CedulaIndex_idx` (`cedula`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1</sql_create_table>
+</table>
+<table name="materia" view="colnames">
+<left>1248</left>
+<top>606</top>
+<width>76</width>
+<height>85</height>
+<sql_create_table>CREATE TABLE `materia` (
+  `codigomateria` int(11) NOT NULL AUTO_INCREMENT,
+  `materia` varchar(30) NOT NULL,
+  `descripcion` text,
+  `imagen` longblob,
+  PRIMARY KEY (`codigomateria`),
+  UNIQUE KEY `MateriaIndex_idx` (`materia`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1</sql_create_table>
+</table>
+<table name="novedad" view="colnames">
+<left>1152</left>
+<top>300</top>
+<width>81</width>
+<height>136</height>
+<sql_create_table>CREATE TABLE `novedad` (
+  `codigonovedad` int(11) NOT NULL AUTO_INCREMENT,
+  `codigoalumno` int(11) NOT NULL,
+  `codigoinspector` int(11) NOT NULL,
+  `codigoparcial` int(11) NOT NULL,
+  `fugas` int(11) NOT NULL,
+  `atrasos` int(11) NOT NULL,
+  `indisciplinas` int(11) NOT NULL,
+  `fecha` date NOT NULL,
+  `descripcion` text,
+  PRIMARY KEY (`codigonovedad`),
+  KEY `codigoalumno_idx` (`codigoalumno`),
+  KEY `codigoinspector_idx` (`codigoinspector`),
+  KEY `codigoparcial_idx` (`codigoparcial`),
+  CONSTRAINT `novedad_ibfk_1` FOREIGN KEY (`codigoparcial`) REFERENCES `parcial` (`codigoparcial`),
+  CONSTRAINT `novedad_ibfk_10` FOREIGN KEY (`codigoparcial`) REFERENCES `parcial` (`codigoparcial`),
+  CONSTRAINT `novedad_ibfk_11` FOREIGN KEY (`codigoinspector`) REFERENCES `inspector` (`codigoinspector`),
+  CONSTRAINT `novedad_ibfk_12` FOREIGN KEY (`codigoalumno`) REFERENCES `alumno` (`codigoalumno`),
+  CONSTRAINT `novedad_ibfk_13` FOREIGN KEY (`codigoparcial`) REFERENCES `parcial` (`codigoparcial`),
+  CONSTRAINT `novedad_ibfk_14` FOREIGN KEY (`codigoinspector`) REFERENCES `inspector` (`codigoinspector`),
+  CONSTRAINT `novedad_ibfk_15` FOREIGN KEY (`codigoalumno`) REFERENCES `alumno` (`codigoalumno`),
+  CONSTRAINT `novedad_ibfk_16` FOREIGN KEY (`codigoparcial`) REFERENCES `parcial` (`codigoparcial`),
+  CONSTRAINT `novedad_ibfk_17` FOREIGN KEY (`codigoinspector`) REFERENCES `inspector` (`codigoinspector`),
+  CONSTRAINT `novedad_ibfk_18` FOREIGN KEY (`codigoalumno`) REFERENCES `alumno` (`codigoalumno`),
+  CONSTRAINT `novedad_ibfk_19` FOREIGN KEY (`codigoparcial`) REFERENCES `parcial` (`codigoparcial`),
+  CONSTRAINT `novedad_ibfk_2` FOREIGN KEY (`codigoinspector`) REFERENCES `inspector` (`codigoinspector`),
+  CONSTRAINT `novedad_ibfk_20` FOREIGN KEY (`codigoinspector`) REFERENCES `inspector` (`codigoinspector`),
+  CONSTRAINT `novedad_ibfk_21` FOREIGN KEY (`codigoalumno`) REFERENCES `alumno` (`codigoalumno`),
+  CONSTRAINT `novedad_ibfk_22` FOREIGN KEY (`codigoparcial`) REFERENCES `parcial` (`codigoparcial`),
+  CONSTRAINT `novedad_ibfk_23` FOREIGN KEY (`codigoinspector`) REFERENCES `inspector` (`codigoinspector`),
+  CONSTRAINT `novedad_ibfk_24` FOREIGN KEY (`codigoalumno`) REFERENCES `alumno` (`codigoalumno`),
+  CONSTRAINT `novedad_ibfk_3` FOREIGN KEY (`codigoalumno`) REFERENCES `alumno` (`codigoalumno`),
+  CONSTRAINT `novedad_ibfk_4` FOREIGN KEY (`codigoparcial`) REFERENCES `parcial` (`codigoparcial`),
+  CONSTRAINT `novedad_ibfk_5` FOREIGN KEY (`codigoinspector`) REFERENCES `inspector` (`codigoinspector`),
+  CONSTRAINT `novedad_ibfk_6` FOREIGN KEY (`codigoalumno`) REFERENCES `alumno` (`codigoalumno`),
+  CONSTRAINT `novedad_ibfk_7` FOREIGN KEY (`codigoparcial`) REFERENCES `parcial` (`codigoparcial`),
+  CONSTRAINT `novedad_ibfk_8` FOREIGN KEY (`codigoinspector`) REFERENCES `inspector` (`codigoinspector`),
+  CONSTRAINT `novedad_ibfk_9` FOREIGN KEY (`codigoalumno`) REFERENCES `alumno` (`codigoalumno`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1</sql_create_table>
+</table>
+<table name="novedadcursomateriahorario" view="colnames">
+<left>1266</left>
+<top>426</top>
+<width>149</width>
+<height>85</height>
+<sql_create_table>CREATE TABLE `novedadcursomateriahorario` (
+  `codigonovedadcursomateriahorario` int(11) NOT NULL AUTO_INCREMENT,
+  `codigonovedad` int(11) NOT NULL,
+  `codigocursomateriahorario` int(11) NOT NULL,
+  `codigotiponovedad` int(11) NOT NULL,
+  PRIMARY KEY (`codigonovedadcursomateriahorario`),
+  UNIQUE KEY `CursoNovedadMateriaHorarioIndex_idx` (`codigonovedad`,`codigocursomateriahorario`,`codigotiponovedad`),
+  KEY `codigonovedad_idx` (`codigonovedad`),
+  KEY `codigocursomateriahorario_idx` (`codigocursomateriahorario`),
+  KEY `codigotiponovedad_idx` (`codigotiponovedad`),
+  CONSTRAINT `novedadcursomateriahorario_ibfk_1` FOREIGN KEY (`codigotiponovedad`) REFERENCES `tiponovedad` (`codigotiponovedad`),
+  CONSTRAINT `novedadcursomateriahorario_ibfk_10` FOREIGN KEY (`codigotiponovedad`) REFERENCES `tiponovedad` (`codigotiponovedad`),
+  CONSTRAINT `novedadcursomateriahorario_ibfk_11` FOREIGN KEY (`codigonovedad`) REFERENCES `novedad` (`codigonovedad`),
+  CONSTRAINT `novedadcursomateriahorario_ibfk_12` FOREIGN KEY (`codigocursomateriahorario`) REFERENCES `cursomateriahorario` (`codigocursomateriahorario`),
+  CONSTRAINT `novedadcursomateriahorario_ibfk_2` FOREIGN KEY (`codigonovedad`) REFERENCES `novedad` (`codigonovedad`),
+  CONSTRAINT `novedadcursomateriahorario_ibfk_3` FOREIGN KEY (`codigocursomateriahorario`) REFERENCES `cursomateriahorario` (`codigocursomateriahorario`),
+  CONSTRAINT `novedadcursomateriahorario_ibfk_4` FOREIGN KEY (`codigotiponovedad`) REFERENCES `tiponovedad` (`codigotiponovedad`),
+  CONSTRAINT `novedadcursomateriahorario_ibfk_5` FOREIGN KEY (`codigonovedad`) REFERENCES `novedad` (`codigonovedad`),
+  CONSTRAINT `novedadcursomateriahorario_ibfk_6` FOREIGN KEY (`codigocursomateriahorario`) REFERENCES `cursomateriahorario` (`codigocursomateriahorario`),
+  CONSTRAINT `novedadcursomateriahorario_ibfk_7` FOREIGN KEY (`codigotiponovedad`) REFERENCES `tiponovedad` (`codigotiponovedad`),
+  CONSTRAINT `novedadcursomateriahorario_ibfk_8` FOREIGN KEY (`codigonovedad`) REFERENCES `novedad` (`codigonovedad`),
+  CONSTRAINT `novedadcursomateriahorario_ibfk_9` FOREIGN KEY (`codigocursomateriahorario`) REFERENCES `cursomateriahorario` (`codigocursomateriahorario`)
+) ENGINE=InnoDB AUTO_INCREMENT=83 DEFAULT CHARSET=latin1</sql_create_table>
+</table>
+<table name="parametro" view="colnames">
+<left>591</left>
+<top>97</top>
+<width>86</width>
+<height>105</height>
+<sql_create_table>CREATE TABLE `parametro` (
+  `codigoparametro` int(11) NOT NULL AUTO_INCREMENT,
+  `parametro` varchar(30) NOT NULL,
+  `tipoparametro` char(1) NOT NULL,
+  `valorint` int(11) DEFAULT NULL,
+  `valorstring` varchar(20) DEFAULT NULL,
+  `imagen` longblob,
+  PRIMARY KEY (`codigoparametro`),
+  UNIQUE KEY `ParametroIndex_idx` (`parametro`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1</sql_create_table>
+</table>
+<table name="parcial" view="colnames">
+<left>998</left>
+<top>348</top>
+<width>100</width>
+<height>85</height>
+<sql_create_table>CREATE TABLE `parcial` (
+  `codigoparcial` int(11) NOT NULL AUTO_INCREMENT,
+  `codigoperiodoescolar` int(11) NOT NULL,
+  `parcial` varchar(50) NOT NULL,
+  `descripcion` text,
+  PRIMARY KEY (`codigoparcial`),
+  UNIQUE KEY `PeriodoIndex_idx` (`codigoperiodoescolar`,`parcial`),
+  KEY `codigoperiodoescolar_idx` (`codigoperiodoescolar`),
+  CONSTRAINT `parcial_ibfk_1` FOREIGN KEY (`codigoperiodoescolar`) REFERENCES `periodoescolar` (`codigoperiodoescolar`),
+  CONSTRAINT `parcial_ibfk_2` FOREIGN KEY (`codigoperiodoescolar`) REFERENCES `periodoescolar` (`codigoperiodoescolar`),
+  CONSTRAINT `parcial_ibfk_3` FOREIGN KEY (`codigoperiodoescolar`) REFERENCES `periodoescolar` (`codigoperiodoescolar`),
+  CONSTRAINT `parcial_ibfk_4` FOREIGN KEY (`codigoperiodoescolar`) REFERENCES `periodoescolar` (`codigoperiodoescolar`),
+  CONSTRAINT `parcial_ibfk_5` FOREIGN KEY (`codigoperiodoescolar`) REFERENCES `periodoescolar` (`codigoperiodoescolar`),
+  CONSTRAINT `parcial_ibfk_6` FOREIGN KEY (`codigoperiodoescolar`) REFERENCES `periodoescolar` (`codigoperiodoescolar`),
+  CONSTRAINT `parcial_ibfk_7` FOREIGN KEY (`codigoperiodoescolar`) REFERENCES `periodoescolar` (`codigoperiodoescolar`),
+  CONSTRAINT `parcial_ibfk_8` FOREIGN KEY (`codigoperiodoescolar`) REFERENCES `periodoescolar` (`codigoperiodoescolar`)
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1</sql_create_table>
+</table>
+<table name="periodo" view="colnames">
+<left>733</left>
+<top>301</top>
+<width>76</width>
+<height>70</height>
+<sql_create_table>CREATE TABLE `periodo` (
+  `codigoperiodo` int(11) NOT NULL AUTO_INCREMENT,
+  `periodo` int(11) NOT NULL,
+  `descripcion` text,
+  PRIMARY KEY (`codigoperiodo`),
+  UNIQUE KEY `PeriodoIndex_idx` (`periodo`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1</sql_create_table>
+</table>
+<table name="periodoescolar" view="colnames">
+<left>838</left>
+<top>323</top>
+<width>115</width>
+<height>105</height>
+<sql_create_table>CREATE TABLE `periodoescolar` (
+  `codigoperiodoescolar` int(11) NOT NULL AUTO_INCREMENT,
+  `codigoperiodo` int(11) NOT NULL,
+  `periodoescolar` varchar(50) NOT NULL,
+  `descripcion` text,
+  `fechainicio` date NOT NULL,
+  `fechafin` date NOT NULL,
+  PRIMARY KEY (`codigoperiodoescolar`),
+  UNIQUE KEY `PeriodoIndex_idx` (`codigoperiodo`,`periodoescolar`),
+  KEY `codigoperiodo_idx` (`codigoperiodo`),
+  CONSTRAINT `periodoescolar_ibfk_1` FOREIGN KEY (`codigoperiodo`) REFERENCES `periodo` (`codigoperiodo`),
+  CONSTRAINT `periodoescolar_ibfk_2` FOREIGN KEY (`codigoperiodo`) REFERENCES `periodo` (`codigoperiodo`),
+  CONSTRAINT `periodoescolar_ibfk_3` FOREIGN KEY (`codigoperiodo`) REFERENCES `periodo` (`codigoperiodo`),
+  CONSTRAINT `periodoescolar_ibfk_4` FOREIGN KEY (`codigoperiodo`) REFERENCES `periodo` (`codigoperiodo`),
+  CONSTRAINT `periodoescolar_ibfk_5` FOREIGN KEY (`codigoperiodo`) REFERENCES `periodo` (`codigoperiodo`),
+  CONSTRAINT `periodoescolar_ibfk_6` FOREIGN KEY (`codigoperiodo`) REFERENCES `periodo` (`codigoperiodo`),
+  CONSTRAINT `periodoescolar_ibfk_7` FOREIGN KEY (`codigoperiodo`) REFERENCES `periodo` (`codigoperiodo`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1</sql_create_table>
+</table>
+<table name="tipofalta" view="colnames">
+<left>1272</left>
+<top>132</top>
+<width>77</width>
+<height>74</height>
+<sql_create_table>CREATE TABLE `tipofalta` (
+  `codigotipofalta` int(11) NOT NULL AUTO_INCREMENT,
+  `falta` varchar(30) NOT NULL,
+  `descripcion` text,
+  PRIMARY KEY (`codigotipofalta`),
+  UNIQUE KEY `FaltaIndex_idx` (`falta`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1</sql_create_table>
+</table>
+<table name="cursoalumno" view="colnames">
+<left>738</left>
+<top>90</top>
+<width>123</width>
+<height>74</height>
+<sql_create_table>CREATE TABLE `cursoalumno` (
+  `codigocursoalumno` int(11) NOT NULL AUTO_INCREMENT,
+  `codigoalumno` int(11) NOT NULL,
+  `codigocurso` int(11) NOT NULL,
+  PRIMARY KEY (`codigocursoalumno`),
+  UNIQUE KEY `CursoAlumnoIndex_idx` (`codigoalumno`,`codigocurso`),
+  KEY `codigocurso_idx` (`codigocurso`),
+  KEY `codigoalumno_idx` (`codigoalumno`),
+  CONSTRAINT `cursoalumno_ibfk_1` FOREIGN KEY (`codigocurso`) REFERENCES `curso` (`codigocurso`),
+  CONSTRAINT `cursoalumno_ibfk_10` FOREIGN KEY (`codigoalumno`) REFERENCES `alumno` (`codigoalumno`),
+  CONSTRAINT `cursoalumno_ibfk_11` FOREIGN KEY (`codigocurso`) REFERENCES `curso` (`codigocurso`),
+  CONSTRAINT `cursoalumno_ibfk_12` FOREIGN KEY (`codigoalumno`) REFERENCES `alumno` (`codigoalumno`),
+  CONSTRAINT `cursoalumno_ibfk_13` FOREIGN KEY (`codigocurso`) REFERENCES `curso` (`codigocurso`),
+  CONSTRAINT `cursoalumno_ibfk_14` FOREIGN KEY (`codigoalumno`) REFERENCES `alumno` (`codigoalumno`),
+  CONSTRAINT `cursoalumno_ibfk_15` FOREIGN KEY (`codigocurso`) REFERENCES `curso` (`codigocurso`),
+  CONSTRAINT `cursoalumno_ibfk_16` FOREIGN KEY (`codigoalumno`) REFERENCES `alumno` (`codigoalumno`),
+  CONSTRAINT `cursoalumno_ibfk_2` FOREIGN KEY (`codigoalumno`) REFERENCES `alumno` (`codigoalumno`),
+  CONSTRAINT `cursoalumno_ibfk_3` FOREIGN KEY (`codigocurso`) REFERENCES `curso` (`codigocurso`),
+  CONSTRAINT `cursoalumno_ibfk_4` FOREIGN KEY (`codigoalumno`) REFERENCES `alumno` (`codigoalumno`),
+  CONSTRAINT `cursoalumno_ibfk_5` FOREIGN KEY (`codigocurso`) REFERENCES `curso` (`codigocurso`),
+  CONSTRAINT `cursoalumno_ibfk_6` FOREIGN KEY (`codigoalumno`) REFERENCES `alumno` (`codigoalumno`),
+  CONSTRAINT `cursoalumno_ibfk_7` FOREIGN KEY (`codigocurso`) REFERENCES `curso` (`codigocurso`),
+  CONSTRAINT `cursoalumno_ibfk_8` FOREIGN KEY (`codigoalumno`) REFERENCES `alumno` (`codigoalumno`),
+  CONSTRAINT `cursoalumno_ibfk_9` FOREIGN KEY (`codigocurso`) REFERENCES `curso` (`codigocurso`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1</sql_create_table>
+</table>
+<table name="tiponovedad" view="colnames">
+<left>1439</left>
+<top>398</top>
+<width>92</width>
+<height>74</height>
+<sql_create_table>CREATE TABLE `tiponovedad` (
+  `codigotiponovedad` int(11) NOT NULL AUTO_INCREMENT,
+  `novedad` varchar(30) NOT NULL,
+  `descripcion` text,
+  PRIMARY KEY (`codigotiponovedad`),
+  UNIQUE KEY `NovedadIndex_idx` (`novedad`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1</sql_create_table>
+</table>
+</tables>
+</canvas>
+</schemadesigner>
